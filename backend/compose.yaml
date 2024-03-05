@@ -1,0 +1,7 @@
+services:
+  backend:
+    build:
+      context: .
+    image: spring-redis-backend
+    ports:
+      - 8080:8080
