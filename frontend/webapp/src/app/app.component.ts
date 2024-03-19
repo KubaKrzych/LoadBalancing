@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { BackendApiService } from './api/backend-api-service.service';
+import { BackendApiService } from './pages/home/api/backend-api-service.service';
 import { IncrementalButtonComponent } from './pages/home/components/incremental-button/incremental-button.component';
 
 @Component({

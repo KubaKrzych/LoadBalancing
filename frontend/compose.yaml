@@ -2,9 +2,9 @@ services:
   app1:
     build:
       context: .
-    environment:
-      - NAME=FirstService
-      - BACKGROUND=black
+      args:
+        - BACKGROUND_COLOR=red
+        - APP_NAME=First service
     networks:
       - front-tier
     depends_on:
@@ -13,9 +13,9 @@ services:
   app2:
     build:
       context: .
-    environment:
-      - NAME=FirstService
-      - BACKGROUND=BLUE
+      args:
+        - APP_NAME=Second service
+        - BACKGROUND_COLOR=black
     networks:
       - front-tier
     depends_on:
@@ -24,9 +24,9 @@ services:
   app3:
     build:
       context: .
-    environment:
-      - NAME=FirstService
-      - BACKGROUND=WHITE
+      args:
+        - APP_NAME=Third service
+        - BACKGROUND_COLOR=blue
     networks:
       - front-tier
     depends_on:

@@ -10,6 +10,8 @@ import { environment } from '../../../environments/environment';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
+  app_name: string = environment.appName;
+
   ngOnInit(): void {
     document.body.style.backgroundColor = environment.backgroundColor;
   }

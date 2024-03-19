@@ -1,5 +1,5 @@
 import { Component, Inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { BackendApiService } from '../../../../api/backend-api-service.service';
+import { BackendApiService } from '../../api/backend-api-service.service';
 import { environment } from '../../../../../environments/environment';
 
 @Component({
