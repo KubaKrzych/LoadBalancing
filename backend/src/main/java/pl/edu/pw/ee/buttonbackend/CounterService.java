@@ -25,6 +25,6 @@ public class CounterService {
 
     public Integer getCounter(String serviceName) {
         String value = redisTemplate.opsForValue().get(serviceName);
-        return value != null ? Integer.parseInt(value) : 0;
+        return value != null ? Integer.parseInt(value) : -1;
     }
 }
