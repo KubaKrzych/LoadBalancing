@@ -14,17 +14,17 @@ public class CounterService {
         this.redisTemplate = redisTemplate;
     }
 
-
     public boolean setCounter(String serviceName) {
         this.redisTemplate.opsForValue().set(serviceName, "0");
         return this.redisTemplate.opsForValue().get(serviceName) != null;
     }
+
     public Long incrementCounter(String serviceName) {
         return redisTemplate.opsForValue().increment(serviceName);
     }
 
     public Integer getCounter(String serviceName) {
         String value = redisTemplate.opsForValue().get(serviceName);
-        return value != null ? Integer.parseInt(value) : -1;
+        return value != null ? Integer.parseInt(value) : 0;
     }
 }

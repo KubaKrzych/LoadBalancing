@@ -25,6 +25,8 @@ public class CounterController {
     }
 
     @PostMapping("/set/{serviceName}")
-    public Boolean setCounter(@PathVariable String serviceName) {return counterService.setCounter(serviceName);}
+    public Boolean setCounter(@PathVariable String serviceName) {
+        return counterService.setCounter(serviceName);
+    }
 
 }
