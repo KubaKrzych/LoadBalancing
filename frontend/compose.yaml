@@ -3,59 +3,37 @@ services:
     build:
       context: .
       args:
-        - BACKGROUND_COLOR=red
+        - BACKGROUND_COLOR=#ffacac
         - APP_NAME=First service
-    networks:
-      - front-tier
-    depends_on:
-      redis:
-        condition: service_healthy
   app2:
     build:
       context: .
       args:
         - APP_NAME=Second service
-        - BACKGROUND_COLOR=black
-    networks:
-      - front-tier
-    depends_on:
-      redis:
-        condition: service_healthy
+        - BACKGROUND_COLOR=#b0dcac
   app3:
     build:
       context: .
       args:
         - APP_NAME=Third service
-        - BACKGROUND_COLOR=blue
-    networks:
-      - front-tier
-    depends_on:
-      redis:
-        condition: service_healthy
-  server:
-    image: nginx:latest
+        - BACKGROUND_COLOR=#50dcdc
+  server1:
+    image: nginx
     volumes:
       - ./etc/loadbalancer/nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - 4210:8080
-    networks:
-      - front-tier
-      - back-tier
+      - 4200:8080
     depends_on:
       - app1
       - app2
       - app3
-
-  redis:
-    image: redis:7.2-alpine
+  server2:
+    image: nginx
+    volumes:
+      - ./etc/weighed-loadbalancer/nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - 6379:6379
-    networks:
-      - back-tier
-    healthcheck:
-      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
-
-      
-networks:
-  front-tier: {}
-  back-tier: {}
+      - 4201:8080
+    depends_on:
+      - app1
+      - app2
+      - app3
