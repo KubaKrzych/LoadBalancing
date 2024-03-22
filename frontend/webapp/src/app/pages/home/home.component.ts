@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { IncrementalButtonComponent } from './components/incremental-button/incremental-button.component';
 import { environment } from '../../../environments/environment';
+import { ContainerComponent } from './container/container.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [IncrementalButtonComponent],
+  imports: [IncrementalButtonComponent, ContainerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
